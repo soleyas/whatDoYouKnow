@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import ChoosePlayer from "./ChoosePlayer";
 
 class Welcome extends Component {
   render() {
+    const { changeYes } = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Do you want to have some fun?</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => changeYes()}>
           <Text>YES</Text>
         </TouchableOpacity>
       </View>
@@ -42,7 +44,6 @@ const styles = StyleSheet.create({
   image: {
     width: null,
     height: null
-    //sresizeMode: "cover"
   }
 });
 

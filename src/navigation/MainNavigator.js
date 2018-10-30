@@ -1,8 +1,5 @@
 import { createStackNavigator } from "react-navigation";
-import Welcome from "../components/Welcome";
 
-const App = createStackNavigator({
-  Welcome: { screen: Welcome }
-});
+const mainStack = createStackNavigator({});
 
-export default App;
+export default mainStack;
