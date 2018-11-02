@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Animated,
+  Dimensions
+} from "react-native";
 import ChoosePlayer from "./ChoosePlayer";
 
 class Welcome extends Component {
@@ -40,10 +47,6 @@ const styles = StyleSheet.create({
     paddingRight: 25,
     borderWidth: 1,
     borderRadius: 8
-  },
-  image: {
-    width: null,
-    height: null
   }
 });
 
