@@ -1,14 +1,24 @@
-import { GET_PLAYERS, ADD_PLAYER } from '../constants/playerConstants';
+import {
+  GET_QUESTIONS,
+  REMOVE_QUESTION,
+  GETTING_QUESTIONS
+} from '../constants/questionConstants';
 
-const INITIAL_STATE = ['Joi', 'Soley', 'Kolbeinn'];
+const INITIAL_STATE = {
+  gettingQuestions: false,
+  questions: []
+};
 
 export default (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-        case GET_PLAYERS:
-            return state;
-        case ADD_PLAYER:
-            return [...state, action.payload];
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case GETTING_QUESTIONS:
+      return { ...state, gotQuestions: false };
+    case GET_QUESTIONS:
+      return { ...state, questions: action.payload, gotQuestions: true };
+    case REMOVE_QUESTION:
+      state.questions.splice(action.payload, 1);
+      return { ...state };
+    default:
+      return state;
+  }
 };
