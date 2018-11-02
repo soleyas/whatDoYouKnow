@@ -1,9 +1,14 @@
-import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+//react
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
 
-import Welcome from "./src/components/Welcome";
-import ChoosePlayerBox from "./src/components/ChoosePlayerBox";
-import ChoosePlayer from "./src/components/ChoosePlayer";
+//redux
+import { Provider } from 'react-redux';
+import reducers from './src/reducers';
+
+//components
+import Welcome from './src/components/Welcome';
+import ChoosePlayer from './src/components/ChoosePlayer';
 
 export default class App extends Component {
   constructor(props) {

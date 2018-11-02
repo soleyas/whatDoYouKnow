@@ -13,7 +13,7 @@ const ChoosePlayerBox = () => (
     <TouchableOpacity style={styles.add}>
       <Icon name="add" type="materialIcons" color="#4b6573" />
     </TouchableOpacity>
-    <TextInput />
+    <TextInput style={styles.textInput} placeholder={'Your name here...'} />
   </View>
 );
 
@@ -35,14 +35,9 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderRadius: 8
   },
-  addText: {
-    color: '#fff',
-    fontSize: 40,
-    fontWeight: '900',
-    padding: 0,
-    margin: 0,
-    textAlign: 'center',
-    textAlignVertical: 'center'
+  textInput: {
+    flex: 1,
+    borderBottomWidth: 1
   }
 });
 
