@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  Text,
-  TouchableOpacity
-} from 'react-native';
+import { View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 const ChoosePlayerBox = () => (
@@ -20,23 +14,23 @@ const ChoosePlayerBox = () => (
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'red',
-    height: '8%',
     borderRadius: 8,
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#bbe556',
     borderWidth: 1
   },
   add: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100%',
+    borderRadius: 8,
     aspectRatio: 1,
-    borderRadius: 8
+    backgroundColor: 'red'
   },
   textInput: {
-    flex: 1,
+    flex: 4,
     borderBottomWidth: 1
   }
 });

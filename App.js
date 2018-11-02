@@ -1,16 +1,14 @@
 //react
-import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 //redux
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import reducers from "./src/reducers";
-import configureStore from "./src/reducers/configureStore";
+import { Provider } from 'react-redux';
+import configureStore from './src/reducers/configureStore';
 
 //components
-import Welcome from "./src/components/Welcome";
-import ChoosePlayer from "./src/components/ChoosePlayer";
+import Welcome from './src/components/Welcome';
+import ChoosePlayer from './src/components/ChoosePlayer';
 
 const store = configureStore();
 
@@ -45,7 +43,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center"
+    backgroundColor: '#fff',
+    justifyContent: 'center'
   }
 });

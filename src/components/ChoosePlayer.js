@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { View, Text } from "react-native";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import ChoosePlayerBox from './ChoosePlayerBox';
 
 class ChoosePlayer extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class ChoosePlayer extends Component {
   render() {
     return (
       <View>
-        <Text> textInComponent </Text>
+        <ChoosePlayerBox />
       </View>
     );
   }
