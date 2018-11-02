@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 
 class ChoosePlayer extends Component {
   constructor(props) {
@@ -16,4 +17,11 @@ class ChoosePlayer extends Component {
   }
 }
 
-export default ChoosePlayer;
+const mapStateToProps = ({ player }) => {
+  return player;
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(ChoosePlayer);

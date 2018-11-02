@@ -1,15 +1,23 @@
+//react
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+//redux
+import { Provider } from 'react-redux';
+import reducers from './src/reducers';
+
+//components
 import Welcome from './src/components/Welcome';
-import ChoosePlayerBox from './src/components/ChoosePlayerBox';
+import ChoosePlayer from './src/components/ChoosePlayer';
 
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <ChoosePlayerBox />;
-      </View>
+      <Provider store={reducers}>
+        <View style={styles.container}>
+          <ChoosePlayer />
+        </View>
+      </Provider>
     );
   }
 }
