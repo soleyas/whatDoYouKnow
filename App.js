@@ -1,14 +1,18 @@
 //react
-import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, View } from "react-native";
 
 //redux
-import { Provider } from 'react-redux';
-import reducers from './src/reducers';
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducers from "./src/reducers";
+import configureStore from "./src/reducers/configureStore";
 
 //components
-import Welcome from './src/components/Welcome';
-import ChoosePlayer from './src/components/ChoosePlayer';
+import Welcome from "./src/components/Welcome";
+import ChoosePlayer from "./src/components/ChoosePlayer";
+
+const store = configureStore();
 
 export default class App extends Component {
   constructor(props) {
@@ -25,13 +29,15 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        {this.state.pressYes ? (
-          <ChoosePlayer />
-        ) : (
-          <Welcome changeYes={this.changeYes} />
-        )}
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          {this.state.pressYes ? (
+            <ChoosePlayer />
+          ) : (
+            <Welcome changeYes={this.changeYes} />
+          )}
+        </View>
+      </Provider>
     );
   }
 }
