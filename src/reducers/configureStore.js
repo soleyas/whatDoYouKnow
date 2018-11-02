@@ -1,7 +1,7 @@
 import { createStore } from "redux";
 import reducers from "./index";
 
-export default function configureStore(initialState) {
+export default function configureStore() {
   const store = createStore(reducers);
 
   if (module.hot) {
