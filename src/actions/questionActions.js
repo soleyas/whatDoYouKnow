@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
   GET_QUESTIONS,
   REMOVE_QUESTION,
-  GETTING_QUESTIONS
+  GETTING_QUESTIONS,
+  CHANGE_QUESTION
 } from '../constants/questionConstants';
 
 const baseUrl = 'https://opentdb.com/api.php';
@@ -16,10 +17,9 @@ export const getQuestions = amount => {
   };
 };
 
-export const removeQuestion = index => {
+export const changeQuestion = () => {
   return {
-    type: REMOVE_QUESTION,
-    payload: index
+    type: CHANGE_QUESTION
   };
 };
 
