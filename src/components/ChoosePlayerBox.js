@@ -9,7 +9,7 @@ import {
 import { Icon } from "react-native-elements";
 import { connect } from "react-redux";
 import { addPlayer } from "../actions/playerAction";
-
+import colors from "../../colors";
 class ChoosePlayerBox extends Component {
   constructor(props) {
     super(props);
@@ -53,12 +53,12 @@ class ChoosePlayerBox extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "red",
+    backgroundColor: colors.red,
     borderRadius: 8,
     flexDirection: "row",
     alignItems: "center",
     padding: 15,
-    backgroundColor: "#D0D0D0",
+    backgroundColor: colors.grey,
     margin: 7
   },
   add: {
