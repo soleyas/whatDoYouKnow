@@ -10,9 +10,8 @@ class Questions extends Component {
     super(props);
   }
   componentDidMount() {
-    const { getQuestions, questions } = this.props;
-    console.log(this.props);
-    getQuestions(10);
+    const { getQuestions, players } = this.props;
+    getQuestions(players.length * 20);
   }
 
   render() {
@@ -38,8 +37,8 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = ({ questions }) => {
-  return { ...questions };
+const mapStateToProps = ({ questions, players }) => {
+  return { ...questions, ...players };
 };
 
 const mapDispatchToProps = dispatch => {
