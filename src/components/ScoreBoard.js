@@ -36,9 +36,9 @@ const styles = StyleSheet.create({
   board: {
     flexDirection: "row",
     justifyContent: "space-around",
-    //backgroundColor: "#E8E8E8",
     padding: 10,
-    borderRadius: 8
+    borderRadius: 8,
+    marginTop: 10
   },
   current: {
     backgroundColor: colors.seaBlue
