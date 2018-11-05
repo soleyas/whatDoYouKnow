@@ -20,7 +20,6 @@ class ChoosePlayerBox extends Component {
 
     this.addingPlayer = this.addingPlayer.bind(this);
   }
-  //onPress={() => addPlayer(inputName)}
 
   addingPlayer = inputName => {
     const { players } = this.props;
