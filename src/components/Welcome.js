@@ -15,16 +15,25 @@ import colors from "../../colors";
 class Welcome extends Component {
   render() {
     const { changeYes } = this.props;
-    return <View style={styles.container}>
-        <ImageBackground style={styles.imageBackground} source={require("/Users/harpahreinsdottir/Documents/HR-haust-2018/ThrounSmaforrita/bigAssignment/whatdoyouknow/assets/RyanBabe.png")} style={{ width: "100%", height: "100%" }}>
+    return (
+      <View style={styles.container}>
+        <ImageBackground
+          style={styles.imageBackground}
+          source={require("/Users/harpahreinsdottir/Documents/HR-haust-2018/ThrounSmaforrita/bigAssignment/whatdoyouknow/assets/RyanBabe.png")}
+          style={{ width: "100%", height: "100%" }}
+        >
           <View style={styles.textView}>
-            <Text style={styles.text}>Do you want to have some fun?</Text>
+            <Text style={styles.text}>
+              Hey you! {"\n"}
+              Do you want to play a game?
+            </Text>
           </View>
           <TouchableOpacity style={styles.button} onPress={() => changeYes()}>
             <Text style={styles.textInButton}>YES</Text>
           </TouchableOpacity>
         </ImageBackground>
-      </View>;
+      </View>
+    );
   }
 }
 
@@ -61,11 +70,13 @@ const styles = StyleSheet.create({
     marginTop:650,
     backgroundColor: "white",
     alignItems:"center",
+    justifyContent:"center"
   },
   textInButton:{
     color: "white",
     fontWeight: "bold",
     fontSize:20,
+    textAlign: 'center'
   }
 });
 
