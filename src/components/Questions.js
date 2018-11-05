@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
-import { getQuestions, removeQuestion } from '../actions/questionActions';
-import Question from './Question';
+import React, { Component } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { connect } from "react-redux";
+import { getQuestions, removeQuestion } from "../actions/questionActions";
+import Question from "./Question";
+import ScoreBoard from "./ScoreBoard";
 
 class Questions extends Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ class Questions extends Component {
         ) : (
           <Text>Getting Questions</Text>
         )}
+        <ScoreBoard />
       </View>
     );
   }

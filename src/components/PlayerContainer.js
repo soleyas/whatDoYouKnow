@@ -18,7 +18,7 @@ class PlayerContainer extends Component {
         <TouchableOpacity style={styles.add} onPress={() => removePlayer(name)}>
           <Icon name="remove" type="materialIcons" color="#ff0000" />
         </TouchableOpacity>
-        <Text style={styles.textInput}>{name}</Text>
+        <Text style={styles.textInput}>{name.name}</Text>
       </View>
     );
   }
