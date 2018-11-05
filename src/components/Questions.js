@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { connect } from "react-redux";
-import { getQuestions } from "../actions/questionActions";
-import Question from "./Question";
-import ScoreBoard from "./ScoreBoard";
-import colors from "../../colors";
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { connect } from 'react-redux';
+import { getQuestions } from '../actions/questionActions';
+import Question from './Question';
+import ScoreBoard from './ScoreBoard';
+import colors from '../../colors';
 
 class Questions extends Component {
   constructor(props) {
@@ -22,7 +22,11 @@ class Questions extends Component {
         {gotQuestions ? (
           <Question question={question} />
         ) : (
-          <Text>Getting Questions</Text>
+          <ActivityIndicator
+            size="large"
+            color={colors.seaBlue}
+            style={styles.indicator}
+          />
         )}
         <ScoreBoard />
       </View>
@@ -35,6 +39,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: colors.mediumBlue
+  },
+  indicator: {
+    flex: 1,
+    alignSelf: 'center'
   }
 });
 
