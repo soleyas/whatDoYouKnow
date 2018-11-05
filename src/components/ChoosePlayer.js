@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: colors.lightBlue
   },
   container: {
     flex: 1,
@@ -48,21 +49,22 @@ const styles = StyleSheet.create({
     margin: 15
   },
   button: {
-    backgroundColor: colors.green,
+    backgroundColor: colors.mediumBlue,
     paddingBottom: 12,
     paddingTop: 12,
     paddingLeft: 25,
     paddingRight: 25,
-    borderWidth: 1,
     borderRadius: 8,
     margin: 20,
     justifyContent: "space-between",
     marginBottom: 35,
     alignItems: "center",
-    width: "50%"
+    width: "50%",
+    borderColor: colors.seaBlue
   },
   textInButton: {
-    fontSize: 20
+    fontSize: 20,
+    color: "#FFF"
   }
 });
 
