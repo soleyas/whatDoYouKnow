@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeQuestion } from '../actions/questionActions';
+import { incrementScore, changePlayer } from '../actions/playerAction';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 class Question extends Component {
@@ -43,10 +44,18 @@ class Question extends Component {
   }
 
   showAnswers(answer) {
-    const { changeQuestion } = this.props;
+    const {
+      changeQuestion,
+      question,
+      incrementScore,
+      changePlayer
+    } = this.props;
     this.setState({ answer });
-
+    if (answer.value === question.correct_answer) {
+      incrementScore();
+    }
     setTimeout(() => {
+      changePlayer();
       changeQuestion();
     }, 1000);
   }
@@ -54,7 +63,6 @@ class Question extends Component {
   render() {
     const { question } = this.props;
     const { answers, answer } = this.state;
-    console.log('answer', answer);
     return (
       <View style={styles.container}>
         <View style={styles.question}>
@@ -65,7 +73,7 @@ class Question extends Component {
             ? answers.map((value, key) => (
                 <TouchableOpacity
                   key={key}
-                  onPress={() => this.showAnswers(value.value)}
+                  onPress={() => this.showAnswers(value)}
                   style={styles.answer}
                 >
                   <Text key={key}>{value.value}</Text>
@@ -127,7 +135,7 @@ const mapStateToProps = ({ questions }) => {
 
 export default connect(
   mapStateToProps,
-  { changeQuestion }
+  { changeQuestion, incrementScore, changePlayer }
 )(Question);
 
 /*
