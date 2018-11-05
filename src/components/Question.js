@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { changeQuestion } from '../actions/questionActions';
-import { incrementScore, changePlayer } from '../actions/playerAction';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { changeQuestion } from "../actions/questionActions";
+import { incrementScore, changePlayer } from "../actions/playerAction";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import colors from "../../colors";
 
 class Question extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Question extends Component {
 
     this.state = {
       answers: [],
-      answer: ''
+      answer: ""
     };
   }
 
@@ -40,7 +41,7 @@ class Question extends Component {
       { value: this.parseString(question.correct_answer), correct: true }
     ];
     answers.sort(() => Math.random() - 0.5);
-    this.setState({ answers, answer: '' });
+    this.setState({ answers, answer: "" });
   }
 
   showAnswers(answer) {
@@ -65,8 +66,10 @@ class Question extends Component {
     const { answers, answer } = this.state;
     return (
       <View style={styles.container}>
-        <View style={styles.question}>
-          <Text>{this.parseString(question.question)}</Text>
+        <View style={styles.innerQuestion}>
+          <Text style={styles.questionText}>
+            {this.parseString(question.question)}
+          </Text>
         </View>
         <View style={styles.answerContainer}>
           {!answer
@@ -76,22 +79,22 @@ class Question extends Component {
                   onPress={() => this.showAnswers(value)}
                   style={styles.answer}
                 >
-                  <Text key={key}>{value.value}</Text>
+                  <Text style={styles.answerText}>{value.value}</Text>
                 </TouchableOpacity>
               ))
             : answers.map((value, key) => (
                 <View
                   style={[
                     styles.answer,
-                    value.value === answer || value.correct
+                    value.value === answer.value || value.correct
                       ? value.correct
                         ? styles.correct
                         : styles.incorrect
-                      : ''
+                      : ""
                   ]}
                   key={key}
                 >
-                  <Text>{value.value}</Text>
+                  <Text style={styles.answerText}>{value.value}</Text>
                 </View>
               ))}
         </View>
@@ -103,30 +106,44 @@ class Question extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-around'
+    justifyContent: "space-around"
   },
   answerContainer: {
     flex: 1,
-    justifyContent: 'space-around'
+    justifyContent: "space-between"
   },
   answer: {
     padding: 20,
-    backgroundColor: '#E8E8E8',
-    alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: colors.lightBlue,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 8
+  },
+  answerText: {
+    color: "#fff",
+    fontWeight: "700"
   },
   correct: {
-    backgroundColor: 'green'
+    backgroundColor: colors.green
   },
   incorrect: {
-    backgroundColor: 'red'
+    backgroundColor: colors.red
   },
-  question: {
+
+  innerQuestion: {
     flex: 1,
-    padding: 40,
-    backgroundColor: '#4BB543',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+    marginTop: 50,
+    marginBottom: 50,
+    backgroundColor: colors.darkBlue,
+    borderRadius: 8
+  },
+  questionText: {
+    color: "#fff",
+    fontWeight: "900",
+    fontSize: 20
   }
 });
 const mapStateToProps = ({ questions }) => {

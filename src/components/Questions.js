@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
-import { getQuestions } from '../actions/questionActions';
-import Question from './Question';
-import ScoreBoard from './ScoreBoard';
+import React, { Component } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { connect } from "react-redux";
+import { getQuestions } from "../actions/questionActions";
+import Question from "./Question";
+import ScoreBoard from "./ScoreBoard";
+import colors from "../../colors";
 
 class Questions extends Component {
   constructor(props) {
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#8A2BE2'
+    backgroundColor: colors.mediumBlue
   }
 });
 

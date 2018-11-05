@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux';
-import ChoosePlayerBox from './ChoosePlayerBox';
-import PlayerContainer from './PlayerContainer';
+import React, { Component } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { connect } from "react-redux";
+import ChoosePlayerBox from "./ChoosePlayerBox";
+import PlayerContainer from "./PlayerContainer";
+import colors from "../../colors";
 
 class ChoosePlayer extends Component {
   constructor(props) {
@@ -32,13 +33,13 @@ class ChoosePlayer extends Component {
 const styles = StyleSheet.create({
   everything: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     paddingTop: 50,
     margin: 10
   },
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     margin: 15
   },
   button: {
-    backgroundColor: '#4BB543',
+    backgroundColor: colors.green,
     paddingBottom: 12,
     paddingTop: 12,
     paddingLeft: 25,
@@ -55,10 +56,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     margin: 20,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     marginBottom: 35,
-    alignItems: 'center',
-    width: '50%'
+    alignItems: "center",
+    width: "50%"
   },
   textInButton: {
     fontSize: 20

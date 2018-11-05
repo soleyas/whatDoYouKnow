@@ -9,6 +9,7 @@ import {
 import { Icon } from "react-native-elements";
 import { connect } from "react-redux";
 import { removePlayer } from "../actions/playerAction";
+import colors from "../../colors";
 
 class PlayerContainer extends Component {
   render() {
@@ -26,12 +27,12 @@ class PlayerContainer extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "red",
+    backgroundColor: colors.red,
     borderRadius: 8,
     flexDirection: "row",
     alignItems: "center",
     padding: 15,
-    backgroundColor: "#E8E8E8",
+    backgroundColor: colors.grey,
     margin: 7
   },
   add: {
