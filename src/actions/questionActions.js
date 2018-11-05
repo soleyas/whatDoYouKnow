@@ -12,7 +12,9 @@ export const getQuestions = amount => {
   return dispatch => {
     dispatch(gettingQuestions());
     axios
-      .get(baseUrl, { params: { amount: amount, type: 'multiple' } })
+      .get(baseUrl, {
+        params: { amount: amount, type: 'multiple', encode: 'url3986' }
+      })
       .then(res => dispatch(getQuestionsSuccess(res.data.results)));
   };
 };

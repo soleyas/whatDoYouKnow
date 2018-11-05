@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -7,10 +7,10 @@ import {
   Animated,
   Dimensions,
   ImageBackground,
-  Image,
-} from "react-native";
-import ChoosePlayer from "./ChoosePlayer";
-import colors from "../../colors";
+  Image
+} from 'react-native';
+import ChoosePlayer from './ChoosePlayer';
+import colors from '../../colors';
 
 class Welcome extends Component {
   render() {
@@ -19,12 +19,12 @@ class Welcome extends Component {
       <View style={styles.container}>
         <ImageBackground
           style={styles.imageBackground}
-          source={require("/Users/harpahreinsdottir/Documents/HR-haust-2018/ThrounSmaforrita/bigAssignment/whatdoyouknow/assets/RyanBabe.png")}
-          style={{ width: "100%", height: "100%" }}
+          source={require('../../assets/RyanBabe.png')}
+          style={{ width: '100%', height: '100%' }}
         >
           <View style={styles.textView}>
             <Text style={styles.text}>
-              Hey you! {"\n"}
+              Hey you! {'\n'}
               Do you want to play a game?
             </Text>
           </View>
@@ -41,18 +41,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.mediumBlue,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop:40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 40
   },
   text: {
     fontSize: 27,
-    padding:20,
+    padding: 20,
     textShadowRadius: 10,
     marginBottom: 15,
-    color: colors.mediumBlue,
+    color: colors.mediumBlue
   },
-  
+
   button: {
     backgroundColor: colors.mediumBlue,
     paddingBottom: 12,
@@ -63,19 +63,19 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginLeft: 120,
     marginRight: 120,
-    marginTop:15,
-    alignItems:"center",
+    marginTop: 15,
+    alignItems: 'center'
   },
-  textView:{
-    marginTop:650,
-    backgroundColor: "white",
-    alignItems:"center",
-    justifyContent:"center"
+  textView: {
+    marginTop: 650,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  textInButton:{
-    color: "white",
-    fontWeight: "bold",
-    fontSize:20,
+  textInButton: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
     textAlign: 'center'
   }
 });

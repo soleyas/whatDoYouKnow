@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { changeQuestion } from "../actions/questionActions";
-import { incrementScore, changePlayer } from "../actions/playerAction";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import colors from "../../colors";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { changeQuestion } from '../actions/questionActions';
+import { incrementScore, changePlayer } from '../actions/playerAction';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import colors from '../../colors';
 
 class Question extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Question extends Component {
 
     this.state = {
       answers: [],
-      answer: ""
+      answer: ''
     };
   }
 
@@ -26,10 +26,6 @@ class Question extends Component {
     this.setAnswers(props);
   }
 
-  parseString(str) {
-    return str;
-  }
-
   setAnswers(props) {
     const { question } = props;
     const incorrect = question.incorrect_answers.map(value => ({
@@ -38,10 +34,10 @@ class Question extends Component {
     }));
     const answers = [
       ...incorrect,
-      { value: this.parseString(question.correct_answer), correct: true }
+      { value: unescape(question.correct_answer), correct: true }
     ];
     answers.sort(() => Math.random() - 0.5);
-    this.setState({ answers, answer: "" });
+    this.setState({ answers, answer: '' });
   }
 
   showAnswers(answer) {
@@ -67,9 +63,7 @@ class Question extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.innerQuestion}>
-          <Text style={styles.questionText}>
-            {this.parseString(question.question)}
-          </Text>
+          <Text style={styles.questionText}>{unescape(question.question)}</Text>
         </View>
         <View style={styles.answerContainer}>
           {!answer
@@ -79,7 +73,7 @@ class Question extends Component {
                   onPress={() => this.showAnswers(value)}
                   style={styles.answer}
                 >
-                  <Text style={styles.answerText}>{value.value}</Text>
+                  <Text style={styles.answerText}>{unescape(value.value)}</Text>
                 </TouchableOpacity>
               ))
             : answers.map((value, key) => (
@@ -90,11 +84,11 @@ class Question extends Component {
                       ? value.correct
                         ? styles.correct
                         : styles.incorrect
-                      : ""
+                      : ''
                   ]}
                   key={key}
                 >
-                  <Text style={styles.answerText}>{value.value}</Text>
+                  <Text style={styles.answerText}>{unescape(value.value)}</Text>
                 </View>
               ))}
         </View>
@@ -106,22 +100,22 @@ class Question extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-around"
+    justifyContent: 'space-around'
   },
   answerContainer: {
     flex: 1,
-    justifyContent: "space-between"
+    justifyContent: 'space-between'
   },
   answer: {
     padding: 20,
     backgroundColor: colors.lightBlue,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 8
   },
   answerText: {
-    color: "#fff",
-    fontWeight: "700"
+    color: '#fff',
+    fontWeight: '700'
   },
   correct: {
     backgroundColor: colors.green
@@ -132,8 +126,8 @@ const styles = StyleSheet.create({
 
   innerQuestion: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 10,
     marginTop: 50,
     marginBottom: 50,
@@ -141,8 +135,8 @@ const styles = StyleSheet.create({
     borderRadius: 8
   },
   questionText: {
-    color: "#fff",
-    fontWeight: "900",
+    color: '#fff',
+    fontWeight: '900',
     fontSize: 20
   }
 });
