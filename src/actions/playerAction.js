@@ -2,7 +2,8 @@ import {
   ADD_PLAYER,
   REMOVE_PLAYER,
   INCREMENT_SCORE,
-  CHANGE_PLAYER
+  CHANGE_PLAYER,
+  SET_WINNER
 } from '../constants/playerConstants';
 
 export const addPlayer = player => {
@@ -31,5 +32,13 @@ export const changePlayer = () => {
   return {
     type: CHANGE_PLAYER,
     payload: null
+  };
+};
+
+export const setWinner = winners => {
+  console.log('action');
+  return {
+    type: SET_WINNER,
+    payload: winners
   };
 };

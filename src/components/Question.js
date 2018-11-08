@@ -45,12 +45,14 @@ class Question extends Component {
       changeQuestion,
       question,
       incrementScore,
-      changePlayer
+      changePlayer,
+      checkForWinner
     } = this.props;
     this.setState({ answer });
-    if (answer.value === question.correct_answer) {
+    if (answer.value === unescape(question.correct_answer)) {
       incrementScore();
     }
+    checkForWinner();
     setTimeout(() => {
       changePlayer();
       changeQuestion();

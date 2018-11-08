@@ -3,7 +3,8 @@ import {
   ADD_PLAYER,
   REMOVE_PLAYER,
   INCREMENT_SCORE,
-  CHANGE_PLAYER
+  CHANGE_PLAYER,
+  SET_WINNER
 } from '../constants/playerConstants';
 
 const INITIAL_STATE = {
@@ -12,7 +13,8 @@ const INITIAL_STATE = {
     { name: 'Soley', score: 0 },
     { name: 'Kolbeinn', score: 0 }
   ],
-  currentPlayer: 0
+  currentPlayer: 0,
+  winners: []
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -28,13 +30,10 @@ export default (state = INITIAL_STATE, action) => {
         players: state.players.filter(item => item !== action.payload)
       };
     case INCREMENT_SCORE:
-      console.log('incrementReduxer');
       return {
         ...state,
         players: state.players.map((value, index) => {
-          console.log(value);
           if (index === state.currentPlayer) {
-            console.log('WOOHOO');
             return { ...value, score: value.score + 1 };
           }
           return value;
@@ -48,6 +47,9 @@ export default (state = INITIAL_STATE, action) => {
             ? state.currentPlayer + 1
             : 0
       };
+    case SET_WINNER:
+      console.log('reducer');
+      return { ...state, winners: action.payload };
 
     default:
       return state;

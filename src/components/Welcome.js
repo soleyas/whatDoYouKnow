@@ -23,10 +23,8 @@ class Welcome extends Component {
           style={{ width: '100%', height: '100%' }}
         >
           <View style={styles.textView}>
-            <Text style={styles.text}>
-              Hey you! {'\n'}
-              Do you want to play a game?
-            </Text>
+            <Text style={styles.textHeyYou}>Hey you!</Text>
+            <Text style={styles.text}>Do you want to play a game?</Text>
           </View>
           <TouchableOpacity style={styles.button} onPress={() => changeYes()}>
             <Text style={styles.textInButton}>YES</Text>
@@ -46,8 +44,10 @@ const styles = StyleSheet.create({
     paddingTop: 40
   },
   text: {
-    fontSize: 27,
-    padding: 20,
+    fontSize: 25,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
     textShadowRadius: 10,
     marginBottom: 15,
     color: colors.mediumBlue
@@ -77,6 +77,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     textAlign: 'center'
+  },
+  textHeyYou: {
+    fontSize: 27,
+    fontWeight: 'bold',
+    textShadowRadius: 10,
+    color: colors.mediumBlue,
+    paddingTop: 10
   }
 });
 
