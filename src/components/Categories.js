@@ -7,7 +7,7 @@ import {
   ActivityIndicator
 } from "react-native";
 import { connect } from "react-redux";
-import { getCategories, setCategory } from "../actions/questionActions";
+import { getCategories, setCategory } from "../actions/categoryActions";
 import colors from "../../colors";
 
 class Categories extends Component {
@@ -20,6 +20,7 @@ class Categories extends Component {
   }
   componentDidMount() {
     const { getCategories } = this.props;
+    console.log("í component did mount");
     getCategories();
   }
 
@@ -140,8 +141,8 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = ({ questions }) => {
-  return { ...questions };
+const mapStateToProps = ({ questions, categories }) => {
+  return { ...questions, ...categories };
 };
 
 const mapDispatchToProps = dispatch => {
