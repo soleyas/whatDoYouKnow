@@ -17,7 +17,6 @@ const categories = new Set([
   "Science: Computers",
   "Entertainment: Television",
   "Entertainment: Video Games",
-  "Science: Mathematics",
   "Geography"
 ]);
 
