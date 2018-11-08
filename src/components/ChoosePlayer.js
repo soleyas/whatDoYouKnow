@@ -12,7 +12,7 @@ class ChoosePlayer extends Component {
   }
   render() {
     const { players } = this.props;
-    const { startGame } = this.props;
+    const { nextStep } = this.props;
     return (
       <View style={styles.everything}>
         <View style={styles.container}>
@@ -22,8 +22,8 @@ class ChoosePlayer extends Component {
             <PlayerContainer name={value} key={key} />
           ))}
         </View>
-        <TouchableOpacity style={styles.button} onPress={() => startGame()}>
-          <Text style={styles.textInButton}>Start Game</Text>
+        <TouchableOpacity style={styles.button} onPress={() => nextStep()}>
+          <Text style={styles.textInButton}>Continue</Text>
         </TouchableOpacity>
       </View>
     );

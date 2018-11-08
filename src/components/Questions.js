@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
-import { connect } from 'react-redux';
-import { getQuestions } from '../actions/questionActions';
-import Question from './Question';
-import ScoreBoard from './ScoreBoard';
-import colors from '../../colors';
+import React, { Component } from "react";
+import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
+import { connect } from "react-redux";
+import { getQuestions } from "../actions/questionActions";
+import Question from "./Question";
+import ScoreBoard from "./ScoreBoard";
+import colors from "../../colors";
 
 class Questions extends Component {
   constructor(props) {
     super(props);
   }
   componentDidMount() {
-    const { getQuestions, players } = this.props;
-    getQuestions(players.length * 20);
+    const { getQuestions, players, category } = this.props;
+    getQuestions(players.length * 20, category.id);
   }
 
   render() {
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   indicator: {
     flex: 1,
-    alignSelf: 'center'
+    alignSelf: "center"
   }
 });
 
@@ -52,8 +52,8 @@ const mapStateToProps = ({ questions, players }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getQuestions: amount => {
-      dispatch(getQuestions(amount));
+    getQuestions: (amount, cat) => {
+      dispatch(getQuestions(amount, cat));
     }
   };
 };
