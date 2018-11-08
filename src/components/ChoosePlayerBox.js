@@ -13,17 +13,19 @@ import colors from "../../colors";
 class ChoosePlayerBox extends Component {
   constructor(props) {
     super(props);
+    this.addingPlayer = this.addingPlayer.bind(this);
 
     this.state = {
       inputName: ""
     };
-
-    this.addingPlayer = this.addingPlayer.bind(this);
   }
 
   addingPlayer = inputName => {
     const { players } = this.props;
     const { addPlayer } = this.props;
+    if (players.length === 0) {
+      console.log("hvað er í gangi");
+    }
     if (players.length === 5) {
       alert("The maximum amount of players is 5");
       this.setState({ inputName: "" });
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ players }) => {
-  return { players: players };
+  return { ...players };
 };
 
 export default connect(
