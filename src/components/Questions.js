@@ -15,7 +15,7 @@ class Questions extends Component {
   }
   componentDidMount() {
     const { getQuestions, players, category } = this.props;
-    getQuestions(players.length * 20, category.id);
+    getQuestions(players.length * 1, category.id);
   }
 
   checkForWinner() {
@@ -33,6 +33,7 @@ class Questions extends Component {
 
   render() {
     const { gotQuestions } = this.props;
+    console.log(this.props.questions);
     return (
       <View style={styles.container}>
         {gotQuestions ? (
@@ -72,7 +73,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(getQuestions(amount));
     },
     setWinner: winners => {
-      setWinner(winners);
+      dispatch(setWinner(winners));
     },
     getQuestions: (amount, cat) => {
       dispatch(getQuestions(amount, cat));

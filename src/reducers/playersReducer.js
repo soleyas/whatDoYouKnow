@@ -8,11 +8,7 @@ import {
 } from '../constants/playerConstants';
 
 const INITIAL_STATE = {
-  players: [
-    { name: 'Joi', score: 0 },
-    { name: 'Soley', score: 0 },
-    { name: 'Kolbeinn', score: 0 }
-  ],
+  players: [{ name: 'Kolbeinn', score: 0 }],
   currentPlayer: 0,
   winners: []
 };

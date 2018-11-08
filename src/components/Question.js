@@ -27,6 +27,10 @@ class Question extends Component {
     this.setAnswers(props);
   }
 
+  parseString(str) {
+    return str;
+  }
+
   setAnswers(props) {
     const { question } = props;
     const incorrect = question.incorrect_answers.map(value => ({
@@ -35,7 +39,7 @@ class Question extends Component {
     }));
     const answers = [
       ...incorrect,
-      { value: unescape(question.correct_answer), correct: true }
+      { value: this.parseString(question.correct_answer), correct: true }
     ];
     answers.sort(() => Math.random() - 0.5);
     this.setState({ answers, answer: '' });
@@ -50,11 +54,11 @@ class Question extends Component {
       checkForWinner
     } = this.props;
     this.setState({ answer });
-    if (answer.value === unescape(question.correct_answer)) {
+    if (answer.value === question.correct_answer) {
       incrementScore();
     }
-    checkForWinner();
     setTimeout(() => {
+      checkForWinner();
       changePlayer();
       changeQuestion();
     }, 1000);

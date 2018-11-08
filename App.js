@@ -42,7 +42,8 @@ export default class App extends Component {
       welcome: false,
       choosePlayer: false,
       questions: false,
-      categories: true
+      categories: true,
+      winner: false
     });
   };
 
@@ -51,7 +52,8 @@ export default class App extends Component {
       welcome: false,
       choosePlayer: false,
       questions: true,
-      winner: false
+      winner: false,
+      categories: false
     });
   };
   showWinnerScreen = () => {
