@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeQuestion } from '../actions/questionActions';
+import { changeQuestion, getCategories } from '../actions/questionActions';
 import { incrementScore, changePlayer } from '../actions/playerAction';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import colors from '../../colors';
@@ -19,6 +19,7 @@ class Question extends Component {
   }
 
   componentDidMount() {
+    this.props.getCategories();
     this.setAnswers(this.props);
   }
 
@@ -146,22 +147,24 @@ const mapStateToProps = ({ questions }) => {
   return { ...questions };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    changeQuestion: () => {
+      changeQuestion();
+    },
+    incrementScore: () => {
+      incrementScore();
+    },
+    changePlayer: () => {
+      changePlayer();
+    },
+    getCategories: () => {
+      dispatch(getCategories());
+    }
+  };
+};
+
 export default connect(
   mapStateToProps,
-  { changeQuestion, incrementScore, changePlayer }
+  { changeQuestion, incrementScore, changePlayer, getCategories }
 )(Question);
-
-/*
-                Object {
-[15:10:26]       "category": "Entertainment: Comics",
-[15:10:26]       "correct_answer": "Mega Man",
-[15:10:26]       "difficulty": "easy",
-[15:10:26]       "incorrect_answers": Array [
-[15:10:26]         "Super Mario Brothers",
-[15:10:26]         "Alex Kidd",
-[15:10:26]         "Super Monkey Ball",
-[15:10:26]       ],
-[15:10:26]       "question": "Which universe crossover was introduced in the &quot;Sonic the Hedgehog&quot; comic issue #247?",
-[15:10:26]       "type": "multiple",
-[15:10:26]     }
-*/

@@ -14,8 +14,8 @@ class Questions extends Component {
     this.checkForWinner = this.checkForWinner.bind(this);
   }
   componentDidMount() {
-    const { getQuestions, players } = this.props;
-    getQuestions(players.length * 10);
+    const { getQuestions, players, category } = this.props;
+    getQuestions(players.length * 20, category.id);
   }
 
   checkForWinner() {
@@ -73,6 +73,9 @@ const mapDispatchToProps = dispatch => {
     },
     setWinner: winners => {
       setWinner(winners);
+    },
+    getQuestions: (amount, cat) => {
+      dispatch(getQuestions(amount, cat));
     }
   };
 };

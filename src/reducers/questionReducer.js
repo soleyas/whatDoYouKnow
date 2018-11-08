@@ -2,13 +2,19 @@ import {
   GET_QUESTIONS,
   REMOVE_QUESTION,
   GETTING_QUESTIONS,
-  CHANGE_QUESTION
-} from '../constants/questionConstants';
+  CHANGE_QUESTION,
+  GET_CATEGORIES,
+  GETTING_CATEGORIES,
+  SET_CATEGORY
+} from "../constants/questionConstants";
 
 const INITIAL_STATE = {
-  gettingQuestions: false,
+  gotQuestions: false,
   questions: [],
-  question: {}
+  question: {},
+  categories: [],
+  gotCategories: false,
+  category: {}
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -35,6 +41,19 @@ export default (state = INITIAL_STATE, action) => {
           (value, index) => randomIndex !== index
         )
       };
+    case GET_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload,
+        gotCategories: true,
+        category: action.payload[0]
+      };
+    case GETTING_CATEGORIES:
+      return { ...state, gotCategories: false };
+    case SET_CATEGORY:
+      console.log("kalli");
+      return { ...state, category: action.payload };
+
     default:
       return state;
   }

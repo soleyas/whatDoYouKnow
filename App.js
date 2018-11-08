@@ -10,7 +10,9 @@ import configureStore from './src/reducers/configureStore';
 import Welcome from './src/components/Welcome';
 import ChoosePlayer from './src/components/ChoosePlayer';
 import Questions from './src/components/Questions';
+import Categories from './src/components/Categories';
 import Winner from './src/components/Winner';
+
 const store = configureStore();
 
 export default class App extends Component {
@@ -20,7 +22,8 @@ export default class App extends Component {
       welcome: true,
       choosePlayer: false,
       questions: false,
-      winner: false
+      winner: false,
+      categories: false
     };
   }
 
@@ -29,7 +32,17 @@ export default class App extends Component {
       welcome: false,
       choosePlayer: true,
       questions: false,
-      winner: false
+      winner: false,
+      categories: false
+    });
+  };
+
+  nextStep = () => {
+    this.setState({
+      welcome: false,
+      choosePlayer: false,
+      questions: false,
+      categories: true
     });
   };
 
@@ -46,19 +59,21 @@ export default class App extends Component {
       welcome: false,
       choosePlayer: false,
       questions: false,
-      winner: true
+      winner: true,
+      categories: false
     });
   };
 
   render() {
-    const { welcome, choosePlayer, questions, winner } = this.state;
+    const { welcome, choosePlayer, questions, winner, categories } = this.state;
     return (
       <Provider store={store}>
         <View style={styles.container}>
           {welcome && <Welcome changeYes={this.changeYes} />}
-          {choosePlayer && <ChoosePlayer startGame={this.startGame} />}
-          {questions && <Questions showWinnerScreen={this.showWinnerScreen} />}
           {winner && <Winner />}
+          {choosePlayer && <ChoosePlayer nextStep={this.nextStep} />}
+          {questions && <Questions showWinnerScreen={this.showWinnerScreen} />}
+          {categories && <Categories startGame={this.startGame} />}
         </View>
       </Provider>
     );
