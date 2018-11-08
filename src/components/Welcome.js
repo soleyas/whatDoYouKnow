@@ -22,13 +22,15 @@ class Welcome extends Component {
           source={require('../../assets/RyanBabe.png')}
           style={{ width: '100%', height: '100%' }}
         >
-          <View style={styles.textView}>
-            <Text style={styles.textHeyYou}>Hey you!</Text>
-            <Text style={styles.text}>Do you want to play a game?</Text>
+          <View style={styles.content}>
+            <View style={styles.textView}>
+              <Text style={styles.textHeyYou}>Hey you!</Text>
+              <Text style={styles.text}>Do you want to play a game?</Text>
+            </View>
+            <TouchableOpacity style={styles.button} onPress={() => changeYes()}>
+              <Text style={styles.textInButton}>YES</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.button} onPress={() => changeYes()}>
-            <Text style={styles.textInButton}>YES</Text>
-          </TouchableOpacity>
         </ImageBackground>
       </View>
     );
@@ -40,37 +42,31 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.mediumBlue,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     paddingTop: 40
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center'
   },
   text: {
     fontSize: 25,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 10,
     textShadowRadius: 10,
     marginBottom: 15,
     color: colors.mediumBlue
   },
-
   button: {
     backgroundColor: colors.mediumBlue,
-    paddingBottom: 12,
-    paddingTop: 12,
-    paddingLeft: 25,
-    paddingRight: 25,
-    borderWidth: 1,
-    borderRadius: 8,
-    marginLeft: 120,
-    marginRight: 120,
-    marginTop: 15,
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 12,
+    borderRadius: 8
   },
   textView: {
-    marginTop: 650,
     backgroundColor: 'white',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    padding: 15
   },
   textInButton: {
     color: 'white',

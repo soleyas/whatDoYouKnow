@@ -19,7 +19,6 @@ class Question extends Component {
   }
 
   componentDidMount() {
-    this.props.getCategories();
     this.setAnswers(this.props);
   }
 
@@ -147,8 +146,8 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 });
-const mapStateToProps = ({ questions }) => {
-  return { ...questions };
+const mapStateToProps = ({ questions, categories }) => {
+  return { ...questions, ...categories };
 };
 
 const mapDispatchToProps = dispatch => {

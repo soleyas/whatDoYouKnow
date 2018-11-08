@@ -17,7 +17,6 @@ const categories = new Set([
   'Science: Computers',
   'Entertainment: Television',
   'Entertainment: Video Games',
-  'Science: Mathematics',
   'Geography'
 ]);
 
@@ -37,25 +36,9 @@ export const getQuestions = (amount, cat) => {
   };
 };
 
-export const getCategories = amount => {
-  return dispatch => {
-    dispatch(gettingCatigories());
-    axios
-      .get(categoryUrl)
-      .then(res => dispatch(getCatigoriesSuccess(res.data)));
-  };
-};
-
 export const changeQuestion = () => {
   return {
     type: CHANGE_QUESTION
-  };
-};
-
-export const setCategory = category => {
-  return {
-    type: SET_CATEGORY,
-    payload: category
   };
 };
 
@@ -69,19 +52,5 @@ const getQuestionsSuccess = data => {
 const gettingQuestions = () => {
   return {
     type: GETTING_QUESTIONS
-  };
-};
-
-const gettingCatigories = () => {
-  return {
-    type: GETTING_CATEGORIES
-  };
-};
-
-const getCatigoriesSuccess = ({ trivia_categories }) => {
-  const cats = trivia_categories.filter(value => categories.has(value.name));
-  return {
-    type: GET_CATEGORIES,
-    payload: cats
   };
 };

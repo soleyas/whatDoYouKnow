@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = ({ questions, players }) => {
-  return { ...questions, ...players };
+const mapStateToProps = ({ questions, players, categories }) => {
+  return { ...questions, ...players, ...categories };
 };
 
 const mapDispatchToProps = dispatch => {

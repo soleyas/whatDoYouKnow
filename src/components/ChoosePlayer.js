@@ -10,6 +10,17 @@ class ChoosePlayer extends Component {
     super(props);
     this.state = {};
   }
+
+  checkOnPlayers = () => {
+    const { nextStep } = this.props;
+    const { players } = this.props;
+    if (players.length === 0) {
+      alert("You need to have at least one player!");
+    } else {
+      nextStep();
+    }
+  };
+
   render() {
     const { players } = this.props;
     const { nextStep } = this.props;
@@ -22,7 +33,10 @@ class ChoosePlayer extends Component {
             <PlayerContainer name={value} key={key} />
           ))}
         </View>
-        <TouchableOpacity style={styles.button} onPress={() => nextStep()}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => this.checkOnPlayers()}
+        >
           <Text style={styles.textInButton}>Continue</Text>
         </TouchableOpacity>
       </View>
