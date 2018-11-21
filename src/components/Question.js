@@ -38,10 +38,6 @@ class Question extends Component {
     if (props.question !== undefined) this.setAnswers(props);
   }
 
-  parseString(str) {
-    return str;
-  }
-
   setAnswers(props) {
     const { question } = props;
     console.log('ques', question);
@@ -51,7 +47,7 @@ class Question extends Component {
     }));
     const answers = [
       ...incorrect,
-      { value: this.parseString(question.correct_answer), correct: true }
+      { value: question.correct_answer, correct: true }
     ];
     answers.sort(() => Math.random() - 0.5);
     this.setState({ answers, answer: '' });
