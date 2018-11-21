@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Animated, Easing } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Animated,
+  Easing,
+  TouchableOpacity
+} from 'react-native';
 import LottieView from 'lottie-react-native';
 import { connect } from 'react-redux';
 import colors from '../../colors';
@@ -22,11 +29,8 @@ class Winner extends Component {
 
   render() {
     const winners = this.props.navigation.state.params;
-    console.log(winners);
-    console.log('aaaaaaaaaaaaaaaaaaaaaa', this.props.navigation.state.params);
+
     const { transformValue } = this.state;
-    const { nextStep } = this.props;
-    const { changeYes } = this.props;
 
     return (
       <View style={styles.container}>
@@ -48,6 +52,22 @@ class Winner extends Component {
             >
               <Text>{winners[0].name}</Text>
             </Animated.View>
+
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('Categories')}
+            >
+              <Text style={styles.textInButton}>Play again</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('ChoosePlayer')}
+            >
+              <Text style={styles.textInButton}>
+                Play again with different players
+              </Text>
+            </TouchableOpacity>
           </View>
         )}
       </View>
@@ -58,12 +78,12 @@ class Winner extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     backgroundColor: colors.darkBlue
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center'
   },
   winnerTitle: {
