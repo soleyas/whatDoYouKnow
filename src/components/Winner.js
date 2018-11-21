@@ -36,38 +36,41 @@ class Winner extends Component {
       <View style={styles.container}>
         {winners.length === 1 && (
           <View style={styles.content}>
-            <LottieView
-              source={require('../../assets/fireworks.json')}
-              autoPlay
-              loop
-            />
-            <Text style={styles.winnerTitle}>THE WINNER IS</Text>
-            <Animated.View
-              style={[
-                styles.winner,
-                {
-                  transform: [{ scale: transformValue }]
-                }
-              ]}
-            >
-              <Text>{winners[0].name}</Text>
-            </Animated.View>
+            <View style={styles.winnerContainer}>
+              <LottieView
+                source={require('../../assets/fireworks.json')}
+                autoPlay
+                loop
+              />
+              <Text style={styles.winnerTitle}>THE WINNER IS</Text>
+              <Animated.View
+                style={[
+                  styles.winner,
+                  {
+                    transform: [{ scale: transformValue }]
+                  }
+                ]}
+              >
+                <Text>{winners[0].name}</Text>
+              </Animated.View>
+            </View>
+            <View style={styles.buttons}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => this.props.navigation.navigate('Categories')}
+              >
+                <Text style={styles.textInButton}>Play again</Text>
+              </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => this.props.navigation.navigate('Categories')}
-            >
-              <Text style={styles.textInButton}>Play again</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => this.props.navigation.navigate('ChoosePlayer')}
-            >
-              <Text style={styles.textInButton}>
-                Play again with different players
-              </Text>
-            </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => this.props.navigation.navigate('ChoosePlayer')}
+              >
+                <Text style={styles.textInButton}>
+                  Play again with different players
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         )}
       </View>
@@ -79,11 +82,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
-    backgroundColor: colors.darkBlue
+    backgroundColor: colors.darkBlue,
+    padding: 20
   },
   content: {
     flex: 1,
-    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  winnerContainer: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
     alignItems: 'center'
   },
   winnerTitle: {
@@ -95,17 +104,24 @@ const styles = StyleSheet.create({
     backgroundColor: colors.seaBlue,
     padding: 20
   },
+  buttons: {
+    flex: 1,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
   button: {
     backgroundColor: colors.mediumBlue,
-    alignItems: 'center',
     padding: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '40%',
+    height: '20%',
     borderRadius: 8
   },
   textInButton: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 20,
-    textAlign: 'center'
+    color: 'white'
   }
 });
 
