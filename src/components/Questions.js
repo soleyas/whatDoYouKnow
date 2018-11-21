@@ -19,7 +19,7 @@ class Questions extends Component {
   }
 
   checkForWinner() {
-    const { questions, players, showWinnerScreen, setWinner } = this.props;
+    const { questions, players, setWinner } = this.props;
     if (questions.length === 0) {
       const maxScore = players.reduce(
         (max, curr) => (max < curr.score ? curr.score : max),
@@ -27,7 +27,7 @@ class Questions extends Component {
       );
       const winners = players.filter(value => value.score === maxScore);
       setWinner(winners);
-      showWinnerScreen();
+      this.props.navigation.navigate('Winner', winners);
     }
   }
 

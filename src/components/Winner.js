@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Animated, Easing } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Animated,
+  Easing,
+  TouchableOpacity
+} from 'react-native';
 import { connect } from 'react-redux';
 import colors from '../../colors';
 
@@ -18,9 +25,14 @@ class Winner extends Component {
       useNativeDriver: true
     }).start();
   }
+
   render() {
-    const { winners } = this.props;
+    const winners = this.props.navigation.state.params;
+    console.log(winners);
+    console.log('aaaaaaaaaaaaaaaaaaaaaa', this.props.navigation.state.params);
     const { transformValue } = this.state;
+    const { nextStep } = this.props;
+    const { changeYes } = this.props;
 
     return (
       <View style={styles.container}>
@@ -31,7 +43,7 @@ class Winner extends Component {
               style={[
                 styles.winner,
                 {
-                  transform: [{ scale: transformValueY }]
+                  transform: [{ scale: transformValue }]
                 }
               ]}
             >
@@ -63,6 +75,18 @@ const styles = StyleSheet.create({
   winner: {
     backgroundColor: colors.seaBlue,
     padding: 20
+  },
+  button: {
+    backgroundColor: colors.mediumBlue,
+    alignItems: 'center',
+    padding: 12,
+    borderRadius: 8
+  },
+  textInButton: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center'
   }
 });
 

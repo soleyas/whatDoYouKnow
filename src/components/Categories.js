@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   ActivityIndicator
-} from "react-native";
-import { connect } from "react-redux";
-import { getCategories, setCategory } from "../actions/categoryActions";
-import colors from "../../colors";
+} from 'react-native';
+import { connect } from 'react-redux';
+import { getCategories, setCategory } from '../actions/categoryActions';
+import colors from '../../colors';
 
 class Categories extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class Categories extends Component {
   }
   componentDidMount() {
     const { getCategories } = this.props;
-    console.log("í component did mount");
+    console.log('í component did mount');
     getCategories();
   }
 
@@ -58,7 +58,10 @@ class Categories extends Component {
                 </Text>
               </TouchableOpacity>
             ))}
-            <TouchableOpacity style={styles.button} onPress={() => startGame()}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('Questions')}
+            >
               <Text style={styles.textInButton}>Start Game</Text>
             </TouchableOpacity>
           </View>
@@ -77,7 +80,7 @@ class Categories extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     paddingTop: 70,
     backgroundColor: colors.mediumBlue,
     paddingLeft: 50,
@@ -85,8 +88,8 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 15,
-    alignItems: "center",
-    width: "100%"
+    alignItems: 'center',
+    width: '100%'
   },
   header: {
     flex: 1,
@@ -94,25 +97,25 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 28,
-    fontWeight: "900",
-    color: "#fff"
+    fontWeight: '900',
+    color: '#fff'
   },
   onItem: {
-    width: "100%",
+    width: '100%',
     margin: 15,
     backgroundColor: colors.lightBlue,
     padding: 10,
     borderRadius: 8,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   onTextInItem: {
-    fontWeight: "500",
+    fontWeight: '500',
     fontSize: 15
   },
   onSelectedTextInItem: {
-    fontWeight: "900",
-    color: "#fff"
+    fontWeight: '900',
+    color: '#fff'
   },
   selected: {
     backgroundColor: colors.seaBlue
@@ -125,19 +128,19 @@ const styles = StyleSheet.create({
     paddingRight: 25,
     borderRadius: 8,
     margin: 20,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     marginBottom: 35,
-    alignItems: "center",
-    width: "50%",
+    alignItems: 'center',
+    width: '50%',
     borderColor: colors.seaBlue
   },
   textInButton: {
     fontSize: 20,
-    color: "#FFF"
+    color: '#FFF'
   },
   indicator: {
     flex: 17,
-    alignSelf: "center"
+    alignSelf: 'center'
   }
 });
 

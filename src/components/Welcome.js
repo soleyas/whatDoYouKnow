@@ -27,7 +27,10 @@ class Welcome extends Component {
               <Text style={styles.textHeyYou}>Hey you!</Text>
               <Text style={styles.text}>Do you want to play a game?</Text>
             </View>
-            <TouchableOpacity style={styles.button} onPress={() => changeYes()}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('ChoosePlayer')}
+            >
               <Text style={styles.textInButton}>YES</Text>
             </TouchableOpacity>
           </View>

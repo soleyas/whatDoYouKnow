@@ -1,23 +1,24 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { connect } from "react-redux";
-import ChoosePlayerBox from "./ChoosePlayerBox";
-import PlayerContainer from "./PlayerContainer";
-import colors from "../../colors";
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
+import ChoosePlayerBox from './ChoosePlayerBox';
+import PlayerContainer from './PlayerContainer';
+import colors from '../../colors';
 
 class ChoosePlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
+ 
 
   checkOnPlayers = () => {
     const { nextStep } = this.props;
     const { players } = this.props;
     if (players.length === 0) {
-      alert("You need to have at least one player!");
+      alert('You need to have at least one player!');
     } else {
-      nextStep();
+      this.props.navigation.navigate('Categories');
     }
   };
 
@@ -47,14 +48,14 @@ class ChoosePlayer extends Component {
 const styles = StyleSheet.create({
   everything: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     backgroundColor: colors.lightBlue
   },
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     paddingTop: 50,
     margin: 10
   },
@@ -70,15 +71,15 @@ const styles = StyleSheet.create({
     paddingRight: 25,
     borderRadius: 8,
     margin: 20,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     marginBottom: 35,
-    alignItems: "center",
-    width: "50%",
+    alignItems: 'center',
+    width: '50%',
     borderColor: colors.seaBlue
   },
   textInButton: {
     fontSize: 20,
-    color: "#FFF"
+    color: '#FFF'
   }
 });
 

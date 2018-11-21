@@ -19,11 +19,11 @@ class Question extends Component {
   }
 
   componentDidMount() {
-    this.setAnswers(this.props);
+    if (this.props.question !== undefined) this.setAnswers(this.props);
   }
 
   componentWillReceiveProps(props) {
-    this.setAnswers(props);
+    if (props.question !== undefined) this.setAnswers(props);
   }
 
   parseString(str) {
@@ -32,6 +32,7 @@ class Question extends Component {
 
   setAnswers(props) {
     const { question } = props;
+    console.log('ques', question);
     const incorrect = question.incorrect_answers.map(value => ({
       value: value,
       correct: false
@@ -68,9 +69,13 @@ class Question extends Component {
     const { answers, answer } = this.state;
     return (
       <View style={styles.container}>
-        <View style={styles.innerQuestion}>
-          <Text style={styles.questionText}>{unescape(question.question)}</Text>
-        </View>
+        {question && (
+          <View style={styles.innerQuestion}>
+            <Text style={styles.questionText}>
+              {unescape(question.question)}
+            </Text>
+          </View>
+        )}
         <View style={styles.answerContainer}>
           {!answer
             ? answers.map((value, key) => (
