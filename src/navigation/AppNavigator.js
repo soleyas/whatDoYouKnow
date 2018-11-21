@@ -9,11 +9,36 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 const AppNavigator = createStackNavigator(
   {
-    Welcome: Welcome,
-    ChoosePlayer: ChoosePlayer,
-    Categories: Categories,
-    Questions: Questions,
-    Winner: Winner
+    Welcome: {
+      screen: Welcome,
+      navigationOptions: {
+        gesturesEnabled: false
+      }
+    },
+    ChoosePlayer: {
+      screen: ChoosePlayer,
+      navigationOptions: {
+        gesturesEnabled: false
+      }
+    },
+    Categories: {
+      screen: Categories,
+      navigationOptions: {
+        gesturesEnabled: true
+      }
+    },
+    Questions: {
+      screen: Questions,
+      navigationOptions: {
+        gesturesEnabled: false
+      }
+    },
+    Winner: {
+      screen: Winner,
+      navigationOptions: {
+        gesturesEnabled: false
+      }
+    }
   },
   {
     headerMode: 'none',
