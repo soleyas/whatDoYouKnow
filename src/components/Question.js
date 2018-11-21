@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeQuestion, getCategories } from '../actions/questionActions';
 import { incrementScore, changePlayer } from '../actions/playerAction';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Animated
+} from 'react-native';
 import colors from '../../colors';
 
 class Question extends Component {
@@ -14,12 +20,17 @@ class Question extends Component {
 
     this.state = {
       answers: [],
-      answer: ''
+      answer: '',
+      fade: new Animated.Value(0)
     };
   }
 
   componentDidMount() {
     this.setAnswers(this.props);
+    Animated.timing(this.state.fade, {
+      toValue: 1,
+      duration: 100
+    }).start();
   }
 
   componentWillReceiveProps(props) {
@@ -65,9 +76,9 @@ class Question extends Component {
 
   render() {
     const { question } = this.props;
-    const { answers, answer } = this.state;
+    const { answers, answer, fade } = this.state;
     return (
-      <View style={styles.container}>
+      <Animated.View style={[styles.container, { opacity: fade }]}>
         <View style={styles.innerQuestion}>
           <Text style={styles.questionText}>{unescape(question.question)}</Text>
         </View>
@@ -98,7 +109,7 @@ class Question extends Component {
                 </View>
               ))}
         </View>
-      </View>
+      </Animated.View>
     );
   }
 }
