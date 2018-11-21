@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Animated, Easing } from 'react-native';
+import LottieView from 'lottie-react-native';
 import { connect } from 'react-redux';
 import colors from '../../colors';
 
@@ -26,12 +27,17 @@ class Winner extends Component {
       <View style={styles.container}>
         {winners.length === 1 && (
           <View style={styles.content}>
+            <LottieView
+              source={require('../../assets/fireworks.json')}
+              autoPlay
+              loop
+            />
             <Text style={styles.winnerTitle}>THE WINNER IS</Text>
             <Animated.View
               style={[
                 styles.winner,
                 {
-                  transform: [{ scale: transformValueY }]
+                  transform: [{ scale: transformValue }]
                 }
               ]}
             >
