@@ -5,11 +5,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   ActivityIndicator
-} from "react-native";
-import { connect } from "react-redux";
-import { getCategories, setCategory } from "../actions/categoryActions";
-import colors from "../../colors";
-import { Icon } from "react-native-elements";
+} from 'react-native';
+import { connect } from 'react-redux';
+import { getCategories, setCategory } from '../actions/categoryActions';
+import colors from '../../colors';
+import { Icon } from 'react-native-elements';
 
 class Categories extends Component {
   constructor(props) {
@@ -62,21 +62,9 @@ class Categories extends Component {
             <View style={styles.buttons}>
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => startGame()}
+                onPress={() => this.props.navigation.navigate('Questions')}
               >
                 <Text style={styles.textInButton}>Start Game</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => changeYes()}
-              >
-                <Icon
-                  name="arrow-left"
-                  type="evilicon"
-                  color="white"
-                  style={{}}
-                />
-                <Text style={styles.textInButton}>Go back</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -139,28 +127,28 @@ const styles = StyleSheet.create({
     backgroundColor: colors.seaBlue,
     padding: 12,
     borderRadius: 8,
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: 'space-between',
+    alignItems: 'center',
     borderColor: colors.seaBlue,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   textInButton: {
     fontSize: 20,
-    color: "#FFF",
-    textAlign: "center"
+    color: '#FFF',
+    textAlign: 'center'
   },
   indicator: {
     flex: 17,
-    alignSelf: "center"
+    alignSelf: 'center'
   },
   buttons: {
     flex: 1,
-    width: "100%",
-    flexDirection: "row-reverse",
-    justifyContent: "space-around",
-    alignItems: "flex-start",
+    width: '100%',
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-around',
+    alignItems: 'flex-start',
     paddingTop: 30
   }
 });
