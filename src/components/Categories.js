@@ -5,10 +5,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   ActivityIndicator
-} from 'react-native';
-import { connect } from 'react-redux';
-import { getCategories, setCategory } from '../actions/categoryActions';
-import colors from '../../colors';
+} from "react-native";
+import { connect } from "react-redux";
+import { getCategories, setCategory } from "../actions/categoryActions";
+import colors from "../../colors";
+import { Icon } from "react-native-elements";
 
 class Categories extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class Categories extends Component {
 
   render() {
     const { categories, category, gotCategories } = this.props;
-    const { startGame } = this.props;
+    const { startGame, changeYes } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -58,12 +59,26 @@ class Categories extends Component {
                 </Text>
               </TouchableOpacity>
             ))}
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => this.props.navigation.navigate('Questions')}
-            >
-              <Text style={styles.textInButton}>Start Game</Text>
-            </TouchableOpacity>
+            <View style={styles.buttons}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => startGame()}
+              >
+                <Text style={styles.textInButton}>Start Game</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => changeYes()}
+              >
+                <Icon
+                  name="arrow-left"
+                  type="evilicon"
+                  color="white"
+                  style={{}}
+                />
+                <Text style={styles.textInButton}>Go back</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         ) : (
           <ActivityIndicator
@@ -122,25 +137,31 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: colors.seaBlue,
-    paddingBottom: 12,
-    paddingTop: 12,
-    paddingLeft: 25,
-    paddingRight: 25,
+    padding: 12,
     borderRadius: 8,
-    margin: 20,
-    justifyContent: 'space-between',
-    marginBottom: 35,
-    alignItems: 'center',
-    width: '50%',
-    borderColor: colors.seaBlue
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderColor: colors.seaBlue,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   },
   textInButton: {
     fontSize: 20,
-    color: '#FFF'
+    color: "#FFF",
+    textAlign: "center"
   },
   indicator: {
     flex: 17,
-    alignSelf: 'center'
+    alignSelf: "center"
+  },
+  buttons: {
+    flex: 1,
+    width: "100%",
+    flexDirection: "row-reverse",
+    justifyContent: "space-around",
+    alignItems: "flex-start",
+    paddingTop: 30
   }
 });
 
