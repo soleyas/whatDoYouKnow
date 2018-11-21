@@ -26,7 +26,6 @@ class Question extends Component {
   }
 
   componentDidMount() {
-    this.setAnswers(this.props);
     Animated.timing(this.state.fade, {
       toValue: 1,
       duration: 1000

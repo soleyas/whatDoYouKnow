@@ -15,7 +15,7 @@ class Questions extends Component {
   }
   componentDidMount() {
     const { getQuestions, players, category, resetScore } = this.props;
-    getQuestions(players.length * 1, category.id);
+    getQuestions(players.length * 5, category.id);
     resetScore();
   }
 

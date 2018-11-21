@@ -34,8 +34,8 @@ class Winner extends Component {
 
     return (
       <View style={styles.container}>
-        {winners.length === 1 && (
-          <View style={styles.content}>
+        <View style={styles.content}>
+          {winners.length == 1 ? (
             <View style={styles.winnerContainer}>
               <LottieView
                 source={require('../../assets/fireworks.json')}
@@ -54,25 +54,29 @@ class Winner extends Component {
                 <Text>{winners[0].name}</Text>
               </Animated.View>
             </View>
-            <View style={styles.buttons}>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => this.props.navigation.navigate('Categories')}
-              >
-                <Text style={styles.textInButton}>Play again</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => this.props.navigation.navigate('ChoosePlayer')}
-              >
-                <Text style={styles.textInButton}>
-                  Play again with different players
-                </Text>
-              </TouchableOpacity>
+          ) : (
+            <View style={styles.winnerContainer}>
+              <Text style={styles.winnerTitle}>THERE WAS A TIE!</Text>
             </View>
+          )}
+          <View style={styles.buttons}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('Categories')}
+            >
+              <Text style={styles.textInButton}>Play again</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('ChoosePlayer')}
+            >
+              <Text style={styles.textInButton}>
+                Play again with different players
+              </Text>
+            </TouchableOpacity>
           </View>
-        )}
+        </View>
       </View>
     );
   }

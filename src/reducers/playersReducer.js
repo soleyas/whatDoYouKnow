@@ -47,15 +47,9 @@ export default (state = INITIAL_STATE, action) => {
     case RESET_SCORE:
       return {
         ...state,
-        players: state.players.map((value, index) => {
-          if (index === state.currentPlayer) {
-            return { ...value, score: 0 };
-          }
-          return value;
-        })
+        players: state.players.map((value, index) => ({ ...value, score: 0 }))
       };
     case SET_WINNER:
-      console.log('reducer');
       return { ...state, winners: action.payload };
 
     default:
