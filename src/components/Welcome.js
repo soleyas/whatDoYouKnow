@@ -57,22 +57,28 @@ const styles = StyleSheet.create({
     color: colors.mediumBlue
   },
   button: {
+    marginTop: 20,
     backgroundColor: colors.mediumBlue,
     alignItems: 'center',
-    padding: 12,
-    borderRadius: 8
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderRadius: 8,
+    marginBottom: 25
   },
   textView: {
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 15
+    backgroundColor: 'white',
+    width: '100%'
   },
   textInButton: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 20,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   textHeyYou: {
     fontSize: 27,
