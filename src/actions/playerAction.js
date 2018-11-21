@@ -3,13 +3,21 @@ import {
   REMOVE_PLAYER,
   INCREMENT_SCORE,
   CHANGE_PLAYER,
-  SET_WINNER
+  SET_WINNER,
+  RESET_SCORE
 } from '../constants/playerConstants';
 
 export const addPlayer = player => {
   return {
     type: ADD_PLAYER,
     payload: player
+  };
+};
+
+export const resetScore = () => {
+  return {
+    type: RESET_SCORE,
+    payload: null
   };
 };
 

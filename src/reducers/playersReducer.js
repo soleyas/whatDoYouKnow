@@ -4,7 +4,8 @@ import {
   REMOVE_PLAYER,
   INCREMENT_SCORE,
   CHANGE_PLAYER,
-  SET_WINNER
+  SET_WINNER,
+  RESET_SCORE
 } from '../constants/playerConstants';
 
 const INITIAL_STATE = {
@@ -42,6 +43,16 @@ export default (state = INITIAL_STATE, action) => {
           state.currentPlayer < state.players.length - 1
             ? state.currentPlayer + 1
             : 0
+      };
+    case RESET_SCORE:
+      return {
+        ...state,
+        players: state.players.map((value, index) => {
+          if (index === state.currentPlayer) {
+            return { ...value, score: 0 };
+          }
+          return value;
+        })
       };
     case SET_WINNER:
       console.log('reducer');
