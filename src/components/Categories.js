@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -21,7 +21,7 @@ class Categories extends Component {
   }
   componentDidMount() {
     const { getCategories } = this.props;
-    console.log("í component did mount");
+    console.log('í component did mount');
     getCategories();
   }
 
@@ -95,7 +95,7 @@ class Categories extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     paddingTop: 70,
     backgroundColor: colors.mediumBlue,
     paddingLeft: 50,
@@ -103,8 +103,8 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 15,
-    alignItems: "center",
-    width: "100%"
+    alignItems: 'center',
+    width: '100%'
   },
   header: {
     flex: 1,
@@ -112,25 +112,25 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 28,
-    fontWeight: "900",
-    color: "#fff"
+    fontWeight: '900',
+    color: '#fff'
   },
   onItem: {
-    width: "100%",
+    width: '100%',
     margin: 15,
     backgroundColor: colors.lightBlue,
     padding: 10,
     borderRadius: 8,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   onTextInItem: {
-    fontWeight: "500",
+    fontWeight: '500',
     fontSize: 15
   },
   onSelectedTextInItem: {
-    fontWeight: "900",
-    color: "#fff"
+    fontWeight: '900',
+    color: '#fff'
   },
   selected: {
     backgroundColor: colors.seaBlue

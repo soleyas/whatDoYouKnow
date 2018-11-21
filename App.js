@@ -7,11 +7,13 @@ import { Provider } from "react-redux";
 import configureStore from "./src/reducers/configureStore";
 
 //components
-import Welcome from "./src/components/Welcome";
-import ChoosePlayer from "./src/components/ChoosePlayer";
-import Questions from "./src/components/Questions";
-import Categories from "./src/components/Categories";
-import Winner from "./src/components/Winner";
+import Welcome from './src/components/Welcome';
+import ChoosePlayer from './src/components/ChoosePlayer';
+import Questions from './src/components/Questions';
+import Categories from './src/components/Categories';
+import Winner from './src/components/Winner';
+import AppNavigator from './src/navigation/AppNavigator';
+import AppContainer from './src/navigation/AppNavigator';
 
 const store = configureStore();
 
@@ -70,15 +72,7 @@ export default class App extends Component {
     const { welcome, choosePlayer, questions, winner, categories } = this.state;
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          {welcome && <Welcome changeYes={this.changeYes} />}
-          {winner && <Winner />}
-          {choosePlayer && <ChoosePlayer nextStep={this.nextStep} />}
-          {questions && <Questions showWinnerScreen={this.showWinnerScreen} />}
-          {categories && (
-            <Categories startGame={this.startGame} changeYes={this.changeYes} />
-          )}
-        </View>
+        <AppContainer />
       </Provider>
     );
   }

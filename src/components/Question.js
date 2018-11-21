@@ -29,12 +29,13 @@ class Question extends Component {
     this.setAnswers(this.props);
     Animated.timing(this.state.fade, {
       toValue: 1,
-      duration: 100
+      duration: 1000
     }).start();
+    if (this.props.question !== undefined) this.setAnswers(this.props);
   }
 
   componentWillReceiveProps(props) {
-    this.setAnswers(props);
+    if (props.question !== undefined) this.setAnswers(props);
   }
 
   parseString(str) {
@@ -43,6 +44,7 @@ class Question extends Component {
 
   setAnswers(props) {
     const { question } = props;
+    console.log('ques', question);
     const incorrect = question.incorrect_answers.map(value => ({
       value: value,
       correct: false
@@ -79,9 +81,13 @@ class Question extends Component {
     const { answers, answer, fade } = this.state;
     return (
       <Animated.View style={[styles.container, { opacity: fade }]}>
-        <View style={styles.innerQuestion}>
-          <Text style={styles.questionText}>{unescape(question.question)}</Text>
-        </View>
+        {question && (
+          <View style={styles.innerQuestion}>
+            <Text style={styles.questionText}>
+              {unescape(question.question)}
+            </Text>
+          </View>
+        )}
         <View style={styles.answerContainer}>
           {!answer
             ? answers.map((value, key) => (
