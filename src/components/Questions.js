@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { getQuestions } from '../actions/questionActions';
-import { setWinner } from '../actions/playerAction';
+import { setWinner, resetScore } from '../actions/playerAction';
 import Question from './Question';
 import ScoreBoard from './ScoreBoard';
 import colors from '../../colors';
@@ -14,8 +14,9 @@ class Questions extends Component {
     this.checkForWinner = this.checkForWinner.bind(this);
   }
   componentDidMount() {
-    const { getQuestions, players, category } = this.props;
+    const { getQuestions, players, category, resetScore } = this.props;
     getQuestions(players.length * 1, category.id);
+    resetScore();
   }
 
   checkForWinner() {
@@ -77,6 +78,9 @@ const mapDispatchToProps = dispatch => {
     },
     getQuestions: (amount, cat) => {
       dispatch(getQuestions(amount, cat));
+    },
+    resetScore: () => {
+      dispatch(resetScore());
     }
   };
 };
