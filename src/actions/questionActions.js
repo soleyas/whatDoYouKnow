@@ -1,24 +1,12 @@
 import axios from 'axios';
 import {
   GET_QUESTIONS,
-  REMOVE_QUESTION,
   GETTING_QUESTIONS,
   CHANGE_QUESTION,
-  GET_CATEGORIES,
-  GETTING_CATEGORIES,
-  SET_CATEGORY
+  GET_QUESTIONS_ERROR
 } from '../constants/questionConstants';
 
 const baseUrl = 'https://opentdb.com/api.php';
-const categoryUrl = 'https://opentdb.com/api_category.php';
-const categories = new Set([
-  'General Knowledge',
-  'Sports',
-  'Science: Computers',
-  'Entertainment: Television',
-  'Entertainment: Video Games',
-  'Geography'
-]);
 
 export const getQuestions = (amount, cat) => {
   return dispatch => {
@@ -32,7 +20,8 @@ export const getQuestions = (amount, cat) => {
           encode: 'url3986'
         }
       })
-      .then(res => dispatch(getQuestionsSuccess(res.data.results)));
+      .then(res => dispatch(getQuestionsSuccess(res.data.results)))
+      .catch(err => dispatch(getQuestionsError(err)));
   };
 };
 
@@ -46,6 +35,13 @@ const getQuestionsSuccess = data => {
   return {
     type: GET_QUESTIONS,
     payload: data
+  };
+};
+
+const getQuestionsError = err => {
+  return {
+    type: GET_QUESTIONS_ERROR,
+    payload: err
   };
 };
 

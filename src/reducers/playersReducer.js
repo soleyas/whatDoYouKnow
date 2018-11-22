@@ -5,11 +5,12 @@ import {
   INCREMENT_SCORE,
   CHANGE_PLAYER,
   SET_WINNER,
-  RESET_SCORE
+  RESET_SCORE,
+  GET_LAST_PLAYERS
 } from '../constants/playerConstants';
 
 const INITIAL_STATE = {
-  players: [{ name: 'Kolbeinn', score: 0 }],
+  players: [],
   currentPlayer: 0,
   winners: []
 };
@@ -51,6 +52,11 @@ export default (state = INITIAL_STATE, action) => {
       };
     case SET_WINNER:
       return { ...state, winners: action.payload };
+    case GET_LAST_PLAYERS:
+      return {
+        ...state,
+        players: action.payload !== null ? action.payload : state.players
+      };
 
     default:
       return state;

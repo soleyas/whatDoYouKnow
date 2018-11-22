@@ -1,30 +1,36 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import ChoosePlayerBox from './ChoosePlayerBox';
 import PlayerContainer from './PlayerContainer';
 import colors from '../../colors';
+import { getLastPlayers } from '../actions/playerAction';
+import Storage from '../storage';
 
 class ChoosePlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
- 
+
+  componentDidMount() {
+    this.props.getLastPlayers();
+  }
 
   checkOnPlayers = () => {
-    const { nextStep } = this.props;
-    const { players } = this.props;
+    const { players, navigation } = this.props;
     if (players.length === 0) {
       alert('You need to have at least one player!');
     } else {
-      this.props.navigation.navigate('Categories');
+      const storage = new Storage();
+      storage.setPlayersToStorage(players);
+      navigation.navigate('Categories');
     }
   };
 
   render() {
     const { players } = this.props;
-    const { nextStep } = this.props;
     return (
       <View style={styles.everything}>
         <View style={styles.container}>
@@ -87,7 +93,20 @@ const mapStateToProps = ({ players }) => {
   return { ...players };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    getLastPlayers: () => {
+      dispatch(getLastPlayers());
+    }
+  };
+};
+
+ChoosePlayer.propTypes = {
+  navigation: PropTypes.object,
+  players: PropTypes.array
+};
+
 export default connect(
   mapStateToProps,
-  {}
+  mapDispatchToProps
 )(ChoosePlayer);

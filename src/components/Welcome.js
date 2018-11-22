@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
-  Animated,
-  Dimensions,
-  ImageBackground,
-  Image
+  ImageBackground
 } from 'react-native';
-import ChoosePlayer from './ChoosePlayer';
 import colors from '../../colors';
 
 class Welcome extends Component {
   render() {
-    const { changeYes } = this.props;
     return (
       <View style={styles.container}>
         <ImageBackground
@@ -81,7 +77,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 20,
-    textAlign: 'center',
+    textAlign: 'center'
   },
   textHeyYou: {
     fontSize: 27,
@@ -91,5 +87,9 @@ const styles = StyleSheet.create({
     paddingTop: 10
   }
 });
+
+Welcome.propTypes = {
+  navigation: PropTypes.object
+};
 
 export default Welcome;

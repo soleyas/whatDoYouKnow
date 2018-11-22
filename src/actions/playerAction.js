@@ -4,8 +4,27 @@ import {
   INCREMENT_SCORE,
   CHANGE_PLAYER,
   SET_WINNER,
-  RESET_SCORE
+  RESET_SCORE,
+  GET_LAST_PLAYERS
 } from '../constants/playerConstants';
+import Storage from '../storage';
+
+export const getLastPlayers = () => {
+  const storage = new Storage();
+  return dispatch => {
+    storage
+      .getPlayersFromStorage()
+      .then(value => dispatch(getLastPlayersSuccess(JSON.parse(value))))
+      .catch();
+  };
+};
+
+export const getLastPlayersSuccess = players => {
+  return {
+    type: GET_LAST_PLAYERS,
+    payload: players
+  };
+};
 
 export const addPlayer = player => {
   return {
@@ -29,7 +48,6 @@ export const removePlayer = player => {
 };
 
 export const incrementScore = () => {
-  console.log('increment this shit');
   return {
     type: INCREMENT_SCORE,
     payload: null
@@ -44,7 +62,6 @@ export const changePlayer = () => {
 };
 
 export const setWinner = winners => {
-  console.log('action');
   return {
     type: SET_WINNER,
     payload: winners

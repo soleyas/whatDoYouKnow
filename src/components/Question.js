@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { changeQuestion, getCategories } from '../actions/questionActions';
 import { incrementScore, changePlayer } from '../actions/playerAction';
@@ -39,7 +40,6 @@ class Question extends Component {
 
   setAnswers(props) {
     const { question } = props;
-    console.log('ques', question);
     const incorrect = question.incorrect_answers.map(value => ({
       value: value,
       correct: false
@@ -177,6 +177,14 @@ const mapDispatchToProps = dispatch => {
       dispatch(getCategories());
     }
   };
+};
+
+Question.propTypes = {
+  changeQuestion: PropTypes.func,
+  question: PropTypes.object,
+  incrementScore: PropTypes.func,
+  changePlayer: PropTypes.func,
+  checkForWinner: PropTypes.func
 };
 
 export default connect(

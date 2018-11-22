@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Animated,
-  StyleSheet,
-  TouchableOpacity,
-  Text
-} from 'react-native';
+import PropTypes from 'prop-types';
+import { Animated, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { removePlayer } from '../actions/playerAction';
@@ -31,7 +26,7 @@ class PlayerContainer extends Component {
 
   render() {
     const { animatedValue } = this.state;
-    const { addPlayer, removePlayer, name } = this.props;
+    const { removePlayer, name } = this.props;
     return (
       <Animated.View
         style={[
@@ -69,6 +64,11 @@ const styles = StyleSheet.create({
     fontSize: 18
   }
 });
+
+PlayerContainer.propTypes = {
+  removePlayer: PropTypes.func,
+  name: PropTypes.object
+};
 
 export default connect(
   null,

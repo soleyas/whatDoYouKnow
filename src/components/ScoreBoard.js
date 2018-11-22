@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { connect } from "react-redux";
-import colors from "../../colors";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { View, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import colors from '../../colors';
 
 class ScoreBoard extends Component {
   constructor(props) {
@@ -11,7 +12,6 @@ class ScoreBoard extends Component {
 
   render() {
     const { players, currentPlayer } = this.props;
-    console.log("All players in game: ", players);
     return (
       <View style={styles.board}>
         {players.map((player, key) => (
@@ -34,8 +34,8 @@ const mapStateToProps = ({ players }) => {
 
 const styles = StyleSheet.create({
   board: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     padding: 10,
     borderRadius: 8,
     marginTop: 10
@@ -44,18 +44,23 @@ const styles = StyleSheet.create({
     backgroundColor: colors.seaBlue
   },
   around: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 10,
     aspectRatio: 1,
     borderRadius: 8
   },
   onText: {
     fontSize: 17,
-    fontWeight: "900",
-    color: "#fff"
+    fontWeight: '900',
+    color: '#fff'
   }
 });
+
+ScoreBoard.propTypes = {
+  players: PropTypes.array,
+  currentPlayer: PropTypes.number
+};
 
 export default connect(
   mapStateToProps,

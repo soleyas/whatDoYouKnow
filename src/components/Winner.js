@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
   StyleSheet,
   Animated,
-  Easing,
   TouchableOpacity
 } from 'react-native';
 import LottieView from 'lottie-react-native';
@@ -29,34 +29,36 @@ class Winner extends Component {
 
   render() {
     const winners = this.props.navigation.state.params;
-
     const { transformValue } = this.state;
 
     return (
       <View style={styles.container}>
         <View style={styles.content}>
-          {winners.length == 1 ? (
+          {winners.length > 0 && (
             <View style={styles.winnerContainer}>
               <LottieView
                 source={require('../../assets/fireworks.json')}
                 autoPlay
                 loop
               />
-              <Text style={styles.winnerTitle}>THE WINNER IS</Text>
-              <Animated.View
-                style={[
-                  styles.winner,
-                  {
-                    transform: [{ scale: transformValue }]
-                  }
-                ]}
-              >
-                <Text>{winners[0].name}</Text>
-              </Animated.View>
-            </View>
-          ) : (
-            <View style={styles.winnerContainer}>
-              <Text style={styles.winnerTitle}>THERE WAS A TIE!</Text>
+              <Text style={styles.winnerTitle}>
+                {winners.length === 1
+                  ? 'THE WINNER IS:'
+                  : 'THERE WAS A TIE BETWEEN:'}
+              </Text>
+              {winners.map((winner, key) => (
+                <Animated.View
+                  style={[
+                    styles.winner,
+                    {
+                      transform: [{ scale: transformValue }]
+                    }
+                  ]}
+                  key={key}
+                >
+                  <Text>{winner.name}</Text>
+                </Animated.View>
+              ))}
             </View>
           )}
           <View style={styles.buttons}>
@@ -106,7 +108,10 @@ const styles = StyleSheet.create({
   },
   winner: {
     backgroundColor: colors.seaBlue,
-    padding: 20
+    padding: 20,
+    width: '50%',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   buttons: {
     flex: 1,
@@ -131,6 +136,10 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ players }) => {
   return { ...players };
+};
+
+Winner.propTypes = {
+  navigation: PropTypes.object
 };
 
 export default connect(

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
+  Animated,
   Text,
   StyleSheet,
   TouchableOpacity,
@@ -9,7 +11,6 @@ import {
 import { connect } from 'react-redux';
 import { getCategories, setCategory } from '../actions/categoryActions';
 import colors from '../../colors';
-import { Icon } from 'react-native-elements';
 
 class Categories extends Component {
   constructor(props) {
@@ -21,9 +22,10 @@ class Categories extends Component {
   }
   componentDidMount() {
     const { getCategories } = this.props;
-    console.log('í component did mount');
     getCategories();
   }
+
+  componentWillUnmount() {}
 
   chooseCategory(category) {
     const { setCategory } = this.props;
@@ -31,8 +33,12 @@ class Categories extends Component {
   }
 
   render() {
-    const { categories, category, gotCategories } = this.props;
-    const { startGame, changeYes } = this.props;
+    const {
+      categories,
+      category,
+      gotCategories,
+      gotCategoriesError
+    } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -67,6 +73,12 @@ class Categories extends Component {
                 <Text style={styles.textInButton}>Start Game</Text>
               </TouchableOpacity>
             </View>
+          </View>
+        ) : gotCategoriesError ? (
+          <View style={styles.header}>
+            <Text style={styles.headerText}>
+              There was a error fetching categories
+            </Text>
           </View>
         ) : (
           <ActivityIndicator
@@ -166,6 +178,16 @@ const mapDispatchToProps = dispatch => {
       dispatch(setCategory(category));
     }
   };
+};
+
+Categories.propTypes = {
+  getCategories: PropTypes.func.isRequired,
+  setCategory: PropTypes.func.isRequired,
+  categories: PropTypes.array,
+  category: PropTypes.object,
+  gotCategories: PropTypes.bool,
+  gotCategoriesError: PropTypes.bool,
+  navigation: PropTypes.object
 };
 
 export default connect(

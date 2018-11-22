@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import PropTypes from 'prop-types';
+import { View, StyleSheet, ActivityIndicator, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { getQuestions } from '../actions/questionActions';
 import { setWinner, resetScore } from '../actions/playerAction';
@@ -33,12 +34,15 @@ class Questions extends Component {
   }
 
   render() {
-    const { gotQuestions } = this.props;
-    console.log(this.props.questions);
+    const { gotQuestions, gotQuestionsError } = this.props;
     return (
       <View style={styles.container}>
         {gotQuestions ? (
           <Question checkForWinner={this.checkForWinner} />
+        ) : gotQuestionsError ? (
+          <View style={styles.indicator}>
+            <Text style={{ color: 'white' }}>Error fetching Questions</Text>
+          </View>
         ) : (
           <ActivityIndicator
             size="large"
@@ -60,6 +64,8 @@ const styles = StyleSheet.create({
   },
   indicator: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     alignSelf: 'center'
   }
 });
@@ -83,6 +89,18 @@ const mapDispatchToProps = dispatch => {
       dispatch(resetScore());
     }
   };
+};
+
+Questions.propTypes = {
+  getQuestions: PropTypes.func,
+  players: PropTypes.array,
+  category: PropTypes.object,
+  resetScore: PropTypes.func,
+  questions: PropTypes.array,
+  setWinner: PropTypes.func,
+  navigation: PropTypes.object,
+  gotQuestions: PropTypes.bool,
+  gotQuestionsError: PropTypes.bool
 };
 
 export default connect(
